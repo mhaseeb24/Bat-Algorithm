@@ -8,35 +8,30 @@ from Bat_Algorithm_tsp import *
 n = int(input("Enter your number of bats: "))
 t = int(input("Enter your number of iterations "))
 MX = 100000
-xbest = ['A','B','C','D']
-cities = ['A', 'B', 'C', 'D']
+xbest = [1,2,3,4]
+cities = [1, 2, 3, 4]
 graph = [[0, 10, 15, 20], [10, 0, 35, 25],
         [15, 35, 0, 30], [20, 25, 30, 0]]
+
+
 rows, cols = (n, 4)
 sol=[]
 for i in range(rows):
     col = []
-    
+    random.shuffle(cities)
     for j in range(cols):
-        col.append(0)
-    arr.append(col)
-print(arr)
-for i in range (0, n-1):
-        for j in range (0, 3):
-            sol[i][j]=0
-print(sol)
+        col.append(cities[j])
+    sol.append(col)
 R = []
 A = []
 for i in range(0,n):
-    temp = shuffler(cities,3)
-    sol.append(temp)
     R.append(round(random.uniform(0.4, 0.5), 2))
     A.append(round(random.uniform(0.4, 0.5), 2))
 
-print (sol,A,R)
-for i in range(t):
-    c = []
-    for i in range(n):
+for i in range(0,t):
+    c = [0] * n
+    print(c)
+    for i in range(0,n):
         bat_obj = BatAlgorithm_tsp(n , t , R[i], A[i], cities, graph)
         temp = bat_obj.solve()
         c[i] = temp[0]
@@ -47,7 +42,7 @@ for i in range(t):
     r = round(random.uniform(0.0, 1.0), 2)
     for i in range (n):
         if(r > R[i]):
-            if(c<cbest):
+            if(c[i]<cbest):
                 cbest = c[i]
                 xcbest = sol[i] 
                 tr=i
