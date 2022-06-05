@@ -1,21 +1,39 @@
 import random
 import sys 
+import numpy as np
 
 from Bat_Algorithm_tsp import *
+
+
 n = int(input("Enter your number of bats: "))
 t = int(input("Enter your number of iterations "))
 MX = 100000
-xbest = [1,2,3,4]
-cities = [1, 2, 3, 4]
+xbest = ['A','B','C','D']
+cities = ['A', 'B', 'C', 'D']
 graph = [[0, 10, 15, 20], [10, 0, 35, 25],
         [15, 35, 0, 30], [20, 25, 30, 0]]
-sol = []
+rows, cols = (n, 4)
+sol=[]
+for i in range(rows):
+    col = []
+    
+    for j in range(cols):
+        col.append(0)
+    arr.append(col)
+print(arr)
+for i in range (0, n-1):
+        for j in range (0, 3):
+            sol[i][j]=0
+print(sol)
 R = []
 A = []
 for i in range(0,n):
-    sol.append(random.shuffle(cities))
+    temp = shuffler(cities,3)
+    sol.append(temp)
     R.append(round(random.uniform(0.4, 0.5), 2))
     A.append(round(random.uniform(0.4, 0.5), 2))
+
+print (sol,A,R)
 for i in range(t):
     c = []
     for i in range(n):

@@ -10,8 +10,8 @@ def OPT(graph, city_names):
 
 def calculate_cost(graph,cities):
     cost = 0
-    for i in range(1,cities.len(cities)):
-        cost += graph[cities[i]][cities[i - 1]]
+    for i in range(1,len(cities)):
+        cost += graph[cities[i]-'A'][cities[i - 1]-'A']
     return cost;
 
 # def calculate_Hamming_dist(x,xbest):
@@ -33,7 +33,7 @@ class BatAlgorithm_tsp():
         city_temp = OPT(self.cities,self.graph)
         # v = calculate_Hamming_dist(city_temp,xbest)
         # v =  np.random.uniform(1, v)
-        cost = calculate_cost(city_temp)
+        cost = calculate_cost(city_temp,self.graph)
         return [cost,city_temp]
 
 
